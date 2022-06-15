@@ -1,0 +1,98 @@
+/* RESET */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/**************************************************
+ Header
+*****************************************************/
+header{
+    padding: 0.5rem 0;
+
+}
+
+.logo{
+    width: 50px;
+    vertical-align: middle;
+}
+
+h1{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-right div{
+    display: inline-block;
+}
+
+
+/****************************************************
+ Main
+**********************************************/
+main{
+    background-color: aquamarine;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Grid and Square */
+.grid{
+    background-color: pink;
+    width: 500px;
+    height: 500px;
+    
+}
+
+.square{
+    border: 1px solid black;
+}
+
+/* Difficult Level */
+.easy{
+    width: calc(100% / 10);
+    height: calc(100% / 10)
+}
+
+.hard{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.crazy{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+
+}
+
+.main-text{
+    display: none;
+    font-weight: bold;
+}
+
+/* BG Color */
+.red{
+    background-color: #dc143c;
+}
+
+.blue{
+    background-color: #6495ed;
+}
+    
+
+
+
