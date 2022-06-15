@@ -51,10 +51,12 @@ main{
 }
 
 /* Grid and Square */
-.grid{
+#grid{
     background-color: pink;
     width: 500px;
     height: 500px;
+    display: flex;
+    flex-wrap: wrap;
     
 }
 
@@ -63,17 +65,17 @@ main{
 }
 
 /* Difficult Level */
-.easy{
+#grid.easy .square{
     width: calc(100% / 10);
     height: calc(100% / 10)
 }
 
-.hard{
+#grid.hard .square{
     width: calc(100% / 9);
     height: calc(100% / 9);
 }
 
-.crazy{
+#grid.crazy .square{
     width: calc(100% / 7);
     height: calc(100% / 7);
 
@@ -85,11 +87,11 @@ main{
 }
 
 /* BG Color */
-.red{
+.square.red{
     background-color: #dc143c;
 }
 
-.blue{
+.square.blue{
     background-color: #6495ed;
 }
     
