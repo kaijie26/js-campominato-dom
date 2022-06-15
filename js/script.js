@@ -16,7 +16,6 @@ playBtn.addEventListener( 'click', startGame);
 function startGame () {
     // HTML elements
     const myGrid = document.getElementById('grid');
-    console.log(myGrid);
 
     // Quando l'utente inizia una nuova partita svuoto la griglia e le classi
     myGrid.innerHTML = '';
@@ -56,7 +55,13 @@ function startGame () {
 
     genSquare()
 
-    // Genero la griglia
+    //***********************************************************/
+    // DOM FUNZIONI
+    //*****************************************************************************/
+
+    //------------------------------------------------------------------
+    // FUNZIONE PER GENERARE LA GRIGLIA 
+    //-------------------------------------------------
     function genSquare() {
         // Scorro i numeri con il ciclo for in base al range che mi da l'utente
         // <div class="square"><span>50</span></div> 
@@ -69,6 +74,7 @@ function startGame () {
             // Aggiungo la classe al quadrato
             newSquare.classList.add('square');
 
+            newSquare.addEventListener('click', cellClick)
             // Appendo in pagina
             myGrid.append(newSquare);
 
@@ -78,16 +84,55 @@ function startGame () {
         
     }
 
-    
+    //--------------------------------------------------------------------------------
+    // FUNZIONE AL CLICK PER SCOPRIRE LE IDENTITÀ DEI NUMERI (QUADRATI)
+    //------------------------------------------------
+    function cellClick() {
+        // Uso il parseint per trasformare i gli span in numeri
+        const thisNumber = parseInt(this.querySelector('span').innerHTML);
+        // Se il numero è incluso in bombs coloro ll quadrato in rosso e faccio terminare il programma
+        // E scrivo un messaggio al utente per dirgli il punteggio
+        let gameContinues = true
+        if(bombs.includes(thisNumber)) {
+            this.classList.add('red')
+            gameContinues = false
+            const userMessage = document.querySelector('.user-message');
+            userMessage.innerHTML = `Peccato, hai perso :-( hai azzecato ${notBombsNum.length} tentativi. Gioca ancora...`
+
+           
+
+        // Altrimenti salvo neila array dei numeri non bombe (azzeccate) e la cella diventa blu
+        // Quando la lunghezza del array dei numeri azzeccati è === al maxChance
+          // Termino il programma e comunico al utente un messaggio che ha vinto
+        }else{
+            if (!notBombsNum.includes(thisNumber)) {
+                notBombsNum.push(thisNumber);
+                this.classList.add('blue')
+ 
+            }
+
+            if(notBombsNum.length === maxChance) {
+                gameContinues = false;
+                alert('hai vinto, hai azzeccato tutti i numeri');
+                
+            }
+        }
+
+
+        
+    }
 
 
     }
-S
+
     //*********************************************************/
     // FUNZIONI 
     //*********************************************************************/
 
-    //--- FUNZIONE PER GENERARE BOMBE-----------------------------------------------------
+    //----------------------------------------------------------------------------------
+    // FUNZIONE PER GENERARE BOMBE
+    //-------------------------------------------------------
+
     // Genero 16 bombe del tutto casuali e li inserisco in una array ma non possono essere duplicati   
     function genBombs(numElements, rangeMin, rangeMax) {
 
@@ -111,3 +156,9 @@ S
     function randomNumBomb(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
     }
+
+
+
+
+
+    
